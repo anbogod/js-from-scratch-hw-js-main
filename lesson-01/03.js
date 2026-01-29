@@ -9,12 +9,10 @@ let sum = 0;
 
 let add = 1;
 
-while (add < 20) {
+while (add <= 20) {
   if (add % 2 === 1) {
-    
+
     sum = sum + add;
-  } else {
-    
   }
 
   add = add + 1;

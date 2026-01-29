@@ -4,15 +4,15 @@
 // your code
 
 
-let sum = 1;
+let sum = 0;
 
 let add = 1;
 
-while (add < 20) {
+while (add <= 20) {
 
     // console.log(`Текущая добавка =  ${add}`);
 
-    sum = sum + (add + 1);
+    sum = sum + add;
 
     // console.log(sum);
 
