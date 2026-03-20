@@ -4,7 +4,26 @@
  */
 
 function isNumeric(str) {
-  // your code
+  str = str.trim()
+  if (str === "") {
+    return false
+  }
+  let hasDot = false
+  let hasDigit = false
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] >= '0' && str[i] <= '9') {
+      hasDigit = true
+    } else if (str[i] === '.') {
+      if (hasDot) {
+        return false
+      }
+      hasDot = true
+    } else if ((str[i] === "+" || str[i] === "-") && i === 0) {
+    } else {
+      return false
+    }
+  }
+  return hasDigit
 }
 
 // console.log(isNumeric("123")) // Ожидаемый результат: true
