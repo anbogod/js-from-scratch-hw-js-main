@@ -10,6 +10,7 @@ function isNumeric(str) {
   }
   let hasDot = false
   let hasDigit = false
+  let hasE = false
   for (let i = 0; i < str.length; i++) {
     if (str[i] >= '0' && str[i] <= '9') {
       hasDigit = true
@@ -18,13 +19,23 @@ function isNumeric(str) {
         return false
       }
       hasDot = true
-    } else if ((str[i] === "+" || str[i] === "-") && i === 0) {
-    } else {
+    } else if ((str[i] === "+" || str[i] === "-") && (i === 0 || (str[i - 1] === 'e' || str[i - 1] === 'E'))) {
+    } else if (str[i] === 'e' || str[i] === 'E') {
+      if (hasE || !hasDigit) {
+        return false
+      }
+      hasE = true
+      hasDot = true
+      hasDigit = false
+    }
+    else {
       return false
     }
   }
   return hasDigit
 }
+
+
 
 // console.log(isNumeric("123")) // Ожидаемый результат: true
 // console.log(isNumeric("12.3")) // Ожидаемый результат: true
